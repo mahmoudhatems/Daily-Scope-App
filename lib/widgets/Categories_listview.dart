@@ -1,8 +1,8 @@
 import 'package:daily_scope/models/category_model.dart';
 import 'package:daily_scope/widgets/category_card.dart';
 import 'package:flutter/material.dart';
-class Categories_ListView extends StatelessWidget {
-  const Categories_ListView({
+class CategoriesListView extends StatelessWidget {
+  const CategoriesListView({
     super.key,
   });
 final List<CategoryModel>categories=const [
