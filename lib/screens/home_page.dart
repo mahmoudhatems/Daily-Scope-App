@@ -1,3 +1,4 @@
+import 'package:daily_scope/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -5,6 +6,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+       // elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("Daily",style: TextStyle(color: maincolor),),
+            Text(" Scope",style: TextStyle(color: secoandcolor),),
+          ],
+        ),
+      ),
+    );
   }
 }
