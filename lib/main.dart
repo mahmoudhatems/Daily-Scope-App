@@ -1,8 +1,10 @@
 import 'package:daily_scope/screens/home_page.dart';
+import 'package:daily_scope/services/news_services.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+NewsServices(dio: Dio()).getNews();
 
   runApp( MyApp());
 }
