@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CategoriesListView(),
               ),
-             news_listview()
+             Newslistview()
             ],
           ),
           // child: Column(
