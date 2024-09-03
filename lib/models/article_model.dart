@@ -7,7 +7,6 @@ ArticleModel({ required this.subTitle, required this.source, required this.image
  final String ? subTitle;
  final Source source;
 
-
 }
 
 

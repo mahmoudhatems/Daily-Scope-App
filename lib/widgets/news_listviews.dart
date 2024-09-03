@@ -3,8 +3,8 @@ import 'package:daily_scope/widgets/news_tile.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class news_listview extends StatelessWidget {
-  const news_listview({
+class Newslistview extends StatelessWidget {
+  const Newslistview({
     super.key,
   });
 
