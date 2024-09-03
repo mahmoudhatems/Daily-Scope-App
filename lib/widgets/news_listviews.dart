@@ -1,4 +1,6 @@
+import 'package:daily_scope/services/news_services.dart';
 import 'package:daily_scope/widgets/news_tile.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class news_listview extends StatelessWidget {
@@ -8,6 +10,8 @@ class news_listview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NewsServices(dio: Dio()).getNews();
+
     return SliverList(
         delegate: SliverChildBuilderDelegate(
       childCount: 10,
