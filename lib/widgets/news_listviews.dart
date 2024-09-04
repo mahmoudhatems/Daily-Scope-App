@@ -1,3 +1,4 @@
+import 'package:daily_scope/models/article_model.dart';
 import 'package:daily_scope/services/news_services.dart';
 import 'package:daily_scope/widgets/news_tile.dart';
 import 'package:dio/dio.dart';
@@ -13,11 +14,14 @@ class Newslistview extends StatefulWidget {
 }
 
 class _NewslistviewState extends State<Newslistview> {
-
+ List <ArticleModel>articles=[];
 @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  void initState()async {
+   super.initState();
+  
+  articles =await NewsServices(dio: Dio()).getNews();
+
+ 
   }
 
   @override
@@ -26,11 +30,11 @@ class _NewslistviewState extends State<Newslistview> {
 
     return SliverList(
         delegate: SliverChildBuilderDelegate(
-      childCount: 10,
+      childCount: articles.length,
       (context, index) {
-        return const Padding(
-          padding:  EdgeInsets.only(top: 22.0,bottom: 22),
-          child:  NewsTile(),
+        return  Padding(
+          padding:  const EdgeInsets.only(top: 22.0,bottom: 22),
+          child:  NewsTile(articleModel: articles[index],),
         );
       },
     ));

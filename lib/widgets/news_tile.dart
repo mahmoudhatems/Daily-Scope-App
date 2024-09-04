@@ -1,9 +1,10 @@
 import 'package:daily_scope/constants.dart';
+import 'package:daily_scope/models/article_model.dart';
 import 'package:flutter/material.dart';
 
 class NewsTile extends StatelessWidget {
-  const NewsTile({super.key});
-
+  const NewsTile({super.key, required this.articleModel});
+final ArticleModel articleModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,20 +15,20 @@ class NewsTile extends StatelessWidget {
           ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
-                "https://assets.goal.com/images/v3/blt7dc55d19dd992dd7/Percy_Tau_Al_Ahly.jpg?auto=webp&format=pjpg&width=1200&quality=60",
+                articleModel.image ??  ,
                 fit: BoxFit.cover,
                 height: 200,
                 width: double.infinity,
               )),
           Text(
-            "Al Ahly urged to get rid of Bafana Bafana vice-captain Percy Tau - He has nothing to offer the club",
+           articleModel.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 20, color:maincolor,fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 8,),
             Text(
-            "The former Club Brugge star has blown hot and cold in the 2023/24 season and the Egyptian giants have been told to release the lefty",
+            articleModel.description??'',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 14, color:maincolorlight,),
