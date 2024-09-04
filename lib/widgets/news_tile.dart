@@ -15,7 +15,7 @@ final ArticleModel articleModel;
           ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
-                articleModel.image ??  ,
+                articleModel.image ?? "" ,
                 fit: BoxFit.cover,
                 height: 200,
                 width: double.infinity,
@@ -28,7 +28,7 @@ final ArticleModel articleModel;
           ),
           const SizedBox(height: 8,),
             Text(
-            articleModel.description??'',
+            articleModel.description,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 14, color:maincolorlight,),
