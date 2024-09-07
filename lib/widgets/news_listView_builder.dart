@@ -10,28 +10,19 @@ class NewsListViewBuilder extends StatefulWidget {
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
-  List<ArticleModel> articles = [];
+  var future;
 
-  bool isLoading = true;
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsServices(dio: Dio()).getNews();
-    isLoading = false;
-  }
-
-  var future ;
-   
-@override
+  @override
   void initState() {
-  future= NewsServices(dio: Dio()).getNews();
+    future = NewsServices(dio: Dio()).getNews(category: 'general');
     super.initState();
   }
 
   @override
   //
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ArticleModel>> ( 
-        future:future ,
+    return FutureBuilder<List<ArticleModel>>(
+        future: future,
         builder: (context, sanpshot) {
           if (sanpshot.hasData) {
             return Newslistview(articles: sanpshot.data!);

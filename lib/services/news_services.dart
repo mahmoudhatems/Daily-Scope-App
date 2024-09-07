@@ -6,7 +6,7 @@ class NewsServices {
 
   NewsServices({required this.dio});
 
-  Future<List<ArticleModel>> getNews() async {
+  Future<List<ArticleModel>> getNews({required String category}) async {
     try {
       // Make the GET request
       var response = await dio.get(
@@ -14,7 +14,7 @@ class NewsServices {
         queryParameters: {
           'country': 'us',
           'apiKey': '8739d2128ad74ac18056c9c64275d2da',
-          'category': 'sports'
+          'category': category,
         },
       );
 
@@ -23,9 +23,10 @@ class NewsServices {
       List<dynamic> articles = jsonData["articles"];
 
       // Convert each article to an ArticleModel
-      List<ArticleModel> articleList = articles.map((article) {
-        return ArticleModel.fromJson(article);
-      }).toList();
+      List<ArticleModel> articleList = articles
+          .map((article) => ArticleModel.fromJson(article))
+          .where((article) => article.image != null && article.image!.isNotEmpty) // Filter articles with images
+          .toList();
 
       return articleList;
     } catch (e) {

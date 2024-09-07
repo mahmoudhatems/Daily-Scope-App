@@ -13,7 +13,7 @@ class Newslistview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NewsServices(dio: Dio()).getNews();
+    NewsServices(dio: Dio()).getNews(category: 'general');
 
     return SliverList(
         delegate: SliverChildBuilderDelegate(
