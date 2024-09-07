@@ -8,7 +8,7 @@ class Newslistview extends StatelessWidget {
  
  final  List<ArticleModel> articles ;
 
-  Newslistview({ required this.articles , super.key});
+  const Newslistview({ required this.articles , super.key});
 
 
   @override

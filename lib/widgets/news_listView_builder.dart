@@ -5,16 +5,20 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
+  final String category;
+
+  const NewsListViewBuilder({super.key, required this.category});
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
 
 class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
+  // ignore: prefer_typing_uninitialized_variables
   var future;
 
   @override
   void initState() {
-    future = NewsServices(dio: Dio()).getNews(category: 'general');
+    future = NewsServices(dio: Dio()).getNews(category: widget.category);
     super.initState();
   }
 
@@ -39,13 +43,6 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
             );
           }
         });
-
-    //   return isLoading
-    //       ? const SliverToBoxAdapter(
-    //           child: Center(child: CircularProgressIndicator()))
-    //       : Newslistview(
-    //           articles: articles,
-    //         );
   }
 }
 
@@ -60,7 +57,7 @@ class ErrorMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       errorMessage,
-      style: TextStyle(color: Colors.black),
+      style:const TextStyle(color: Colors.black),
     );
   }
 }

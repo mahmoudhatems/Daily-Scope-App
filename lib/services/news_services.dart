@@ -31,7 +31,7 @@ class NewsServices {
       return articleList;
     } catch (e) {
       // Log or handle the error appropriately
-      print("Error fetching news: $e");
+    
       return []; // Return an empty list on error
     }
   }

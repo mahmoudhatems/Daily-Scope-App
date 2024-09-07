@@ -1,11 +1,6 @@
 import 'package:daily_scope/constants.dart';
-import 'package:daily_scope/models/article_model.dart';
-import 'package:daily_scope/services/news_services.dart';
 import 'package:daily_scope/widgets/Categories_listview.dart';
 import 'package:daily_scope/widgets/news_listView_builder.dart';
-import 'package:daily_scope/widgets/news_listviews.dart';
-import 'package:daily_scope/widgets/news_tile.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,36 +16,35 @@ class HomePage extends StatelessWidget {
           title: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Daily",
-                style: TextStyle(color: maincolor),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  "Daily",
+                  style: TextStyle(color: maincolor,fontWeight: FontWeight.bold), 
+                ),
               ),
-              Text(
-                " Scope",
-                style: TextStyle(color: secoandcolor),
-              ),
+               Padding(
+                 padding: const EdgeInsets.all(4.0),
+                 child: Text(
+                   "Scope",
+                   style: TextStyle(color: secoandcolor,fontWeight: FontWeight.bold), 
+                 ),
+               ),
             ],
           ),
         ),
-        body:  Padding(
+        body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(
                 child: CategoriesListView(),
               ),
-             NewsListViewBuilder()
+              NewsListViewBuilder(
+                category: 'general',
+              )
             ],
           ),
-          // child: Column(
-
-          //   children: [
-          //     Categories_ListView(),
-          //     SizedBox(height: 30,),
-
-          //    Expanded(child: news_listview())
-          //   ],
-          // ),
         ));
   }
 }

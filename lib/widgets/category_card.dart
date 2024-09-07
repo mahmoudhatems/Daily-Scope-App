@@ -12,7 +12,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector( onTap: (){
       Navigator.of(context).push(MaterialPageRoute(builder: (context){
-        return const CategoryScreen();
+        return  CategoryScreen(category: category.categoryName);
       }));
     } ,
       child: Padding(
@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
             height:100 ,
             width: 160,
             child: Center(
-              child: Text(category.categoryName,style: TextStyle(
+              child: Text(category.categoryName,style: const TextStyle(
                 color:Colors.white,fontSize: 22,fontWeight: FontWeight.bold
               
               ),),
