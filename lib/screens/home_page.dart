@@ -1,7 +1,11 @@
 import 'package:daily_scope/constants.dart';
+import 'package:daily_scope/models/article_model.dart';
+import 'package:daily_scope/services/news_services.dart';
 import 'package:daily_scope/widgets/Categories_listview.dart';
+import 'package:daily_scope/widgets/news_listView_builder.dart';
 import 'package:daily_scope/widgets/news_listviews.dart';
 import 'package:daily_scope/widgets/news_tile.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,7 +39,7 @@ class HomePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CategoriesListView(),
               ),
-             Newslistview()
+             NewsListViewBuilder()
             ],
           ),
           // child: Column(
