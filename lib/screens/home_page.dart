@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        body: const Padding(
+        body:  Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
             slivers: [

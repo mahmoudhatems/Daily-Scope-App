@@ -14,7 +14,7 @@ class NewsServices {
         queryParameters: {
           'country': 'us',
           'apiKey': '8739d2128ad74ac18056c9c64275d2da',
-          'category': 'general'
+          'category': 'sports'
         },
       );
 

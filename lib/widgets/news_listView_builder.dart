@@ -5,10 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
-  const NewsListViewBuilder({
-    super.key,
-  });
-
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
@@ -18,33 +14,62 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
 
   bool isLoading = true;
 
-  @override
-  void initState() {
-    super.initState();
-
-    getGeneralNews();
-  }
-
   Future<void> getGeneralNews() async {
     articles = await NewsServices(dio: Dio()).getNews();
     isLoading = false;
-    setState(() {});
+  }
+
+  var future ;
+   
+@override
+  void initState() {
+  future= NewsServices(dio: Dio()).getNews();
+    super.initState();
   }
 
   @override
   //
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<ArticleModel>> ( 
+        future:future ,
+        builder: (context, sanpshot) {
+          if (sanpshot.hasData) {
+            return Newslistview(articles: sanpshot.data!);
+          } else if (sanpshot.hasError) {
+            return const SliverToBoxAdapter(
+              child: Center(
+                  child: ErrorMessage(
+                errorMessage: "There was an error , try latter",
+              )),
+            );
+          } else {
+            return const SliverToBoxAdapter(
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+        });
 
-    return FutureBuilder(future:NewsServices(dio: Dio()).getNews() , builder: (context,sanpshot){
-      return Newslistview(articles: articles);
-    });
+    //   return isLoading
+    //       ? const SliverToBoxAdapter(
+    //           child: Center(child: CircularProgressIndicator()))
+    //       : Newslistview(
+    //           articles: articles,
+    //         );
+  }
+}
 
+class ErrorMessage extends StatelessWidget {
+  const ErrorMessage({
+    super.key,
+    required this.errorMessage,
+  });
+  final String errorMessage;
 
-  //   return isLoading
-  //       ? const SliverToBoxAdapter(
-  //           child: Center(child: CircularProgressIndicator()))
-  //       : Newslistview(
-  //           articles: articles,
-  //         );
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      errorMessage,
+      style: TextStyle(color: Colors.black),
+    );
   }
 }
